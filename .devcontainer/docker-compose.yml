@@ -1,0 +1,27 @@
+version: '3.2'
+services:
+  fauna_blog:
+    container_name: react_fauna
+    # ホスト名を明示的に指定する
+    hostname: localhost
+    build:
+      context: .
+      dockerfile: ./ubuntu/arm/Dockerfile
+      args:
+        USER_ID: 1000
+        USER_NAME: vscode
+        GROUP_ID: 1000
+        GROUP_NAME: vscode
+        WORK_DIR: develop
+    environment:
+      - TZ=JST-9
+    ports:
+      - 80:80
+      - 3000:3000
+      - 443:443
+    volumes:
+      # ソースコードとdevcontainerを一緒に管理する場合は明示的にマウント先を指定
+      - ..:/home/vscode/develop:cached
+      - ~/.ssh:/home/vscode/.ssh
+      - .extensions:/home/vscode/.vscode-server/extensions
+    command: sleep infinity

@@ -1,0 +1,10 @@
+type Post {
+  content: String!
+  published: Boolean
+  slug: String!
+}
+
+type Query {
+  allPosts: [Post!]
+  findPostBySlug(slug: String!): Post
+}
