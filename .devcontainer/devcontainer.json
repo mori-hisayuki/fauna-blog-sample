@@ -20,7 +20,9 @@
     "ms-azuretools.vscode-docker",            // Docker
     "rangav.vscode-thunder-client",           // Thunder Client
     "ritwickdey.liveserver",                  // Live Server
-    "fauna.fauna"                             // Fauna
+    "fauna.fauna",                            // Fauna
+    "dbaeumer.vscode-eslint",                 // ESLint
+    "esbenp.prettier-vscode"                  // Prettier
   ],
 	"remoteUser": "vscode"
 }
