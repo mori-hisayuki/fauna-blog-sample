@@ -6,7 +6,7 @@ services:
     hostname: localhost
     build:
       context: .
-      dockerfile: ./ubuntu/arm/Dockerfile
+      dockerfile: ./ubuntu/amd/Dockerfile
       args:
         USER_ID: 1000
         USER_NAME: vscode

@@ -7,7 +7,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      authorization: `Basic ${process.env.FAUNA_TOKEN}`
+      authorization: `Bearer ${process.env.FAUNA_TOKEN}`
     }
   }))
 
