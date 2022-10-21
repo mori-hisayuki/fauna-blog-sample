@@ -7,6 +7,8 @@ extends:
   # Next.js 専用の ESLint のルール
   - next/core-web-vitals
   - plugin:@typescript-eslint/recommended
+  # prettierの追加
+  - prettier
 plugins:
   - '@typescript-eslint'
 # ルール追加の手順
