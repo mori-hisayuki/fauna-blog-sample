@@ -1,3 +1,8 @@
+/** Tailwind directives **/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -25,7 +30,29 @@ a {
   }
 }
 
-/** Tailwind directives **/
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ==========================================================================================
+Tailwind CSSによってh1〜h6までのスタイルが上書きされてしまっているので
+EditorJSのHeaderの文字サイズが変わらないことに対しての対応
+
+Tailwind Font Size(https://tailwindcss.com/docs/font-size)
+========================================================================================== */
+@layer base {
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold;
+  }
+  h3 {
+    @apply text-2xl font-bold;
+  }
+  h4 {
+    @apply text-xl font-bold;
+  }
+  h5 {
+    @apply text-lg font-bold;
+  }
+  h6 {
+    @apply text-base font-bold;
+  }
+}
