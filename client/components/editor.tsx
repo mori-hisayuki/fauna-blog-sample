@@ -88,7 +88,7 @@ const Editor: React.FC = () => {
             type: 'header',
             data: {
               text: 'New blog post title here....',
-              level: 2
+              level: 1
             }
           },
           {
@@ -100,11 +100,11 @@ const Editor: React.FC = () => {
         ]
       },
       onReady: () => {
-        console.log('Editor.js is ready to work!')
+        // console.log('Editor.js is ready to work!')
         editorRef.current = editor
       },
       onChange: () => {
-        console.log('Content was changed')
+        // console.log('Content was changed')
       }
     })
   }
@@ -125,7 +125,7 @@ const Editor: React.FC = () => {
     for (let i = 0; i < outputData.blocks.length; i++) {
       if (
         outputData.blocks[i].type === 'header' &&
-        outputData.blocks[i].data.level === 2
+        outputData.blocks[i].data.level === 1
       ) {
         title = outputData.blocks[i].data.text
         break
