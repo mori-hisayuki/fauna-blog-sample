@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import React from 'react'
 import { GetServerSideProps } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import apolloClient from '../lib/apolloClient'
 
@@ -24,7 +23,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
     let title = 'Without Title'
     let description = 'Without Description'
     for (let i = 0; i < content.blocks.length; i++) {
-      if (content.blocks[i].type === 'header' && content.blocks[i].data.level === 2) {
+      if (content.blocks[i].type === 'header' && content.blocks[i].data.level === 1) {
         title = content.blocks[i].data.text
         break
       }
