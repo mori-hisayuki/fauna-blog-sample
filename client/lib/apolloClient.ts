@@ -1,13 +1,13 @@
 import { ApolloClient, HttpLink, ApolloLink, InMemoryCache, concat } from '@apollo/client'
 
-const httpLink = new HttpLink({ uri: process.env.FAUNA_GRAPHQL_ENDPOINT })
+const httpLink = new HttpLink({ uri: process.env.NEXT_PUBLIC_FAUNA_GRAPHQL_ENDPOINT })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      authorization: `Bearer ${process.env.FAUNA_TOKEN}`
+      authorization: `Bearer ${process.env.NEXT_PUBLIC_FAUNA_TOKEN}`
     }
   }))
 
