@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import EditorJS from '@editorjs/editorjs'
 import Header from '@editorjs/header'
 import Image from '@editorjs/image'
@@ -21,11 +21,10 @@ import apolloClient from '../lib/apolloClient'
 
 const Editor: React.FC = () => {
   const editorRef = useRef<EditorJS>()
-  const [editorData, setEditorData] = useState(null)
 
   const initEditor = () => {
     const editor = new EditorJS({
-      holderId: 'editorjs',
+      holder: 'editorjs',
       tools: {
         header: {
           class: Header,
@@ -33,7 +32,7 @@ const Editor: React.FC = () => {
           config: {
             placeholder: 'Enter a header',
             levels: [1, 2, 3, 4, 5, 6],
-            defaultLevel: 3
+            defaultLevel: 2
           },
           shortcut: 'CMD+SHIFT+H'
         },
