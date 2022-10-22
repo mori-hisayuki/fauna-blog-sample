@@ -1,6 +1,4 @@
 import gql from 'graphql-tag'
-import { useRouter } from 'next/router'
-
 import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import apolloClient from '../../lib/apolloClient'
@@ -21,11 +19,9 @@ type EditorData = {
   data: Content
 }
 type PostProps = {
-  post: {
-    content: string
-    published: string
-    slug: string
-  }
+  content: string
+  published: string
+  slug: string
 }
 
 const Output = dynamic<EditorData>(() => import('editorjs-react-renderer'), {
@@ -33,7 +29,7 @@ const Output = dynamic<EditorData>(() => import('editorjs-react-renderer'), {
 })
 
 const Post: React.FC<PostProps> = props => {
-  const content = JSON.parse(props.post.content) as Content
+  const content = JSON.parse(props.content) as Content
   return (
     <div className="min-h-full">
       <div className="bg-gray-800 pb-32">
@@ -60,7 +56,7 @@ const Post: React.FC<PostProps> = props => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps<PostProps> = async context => {
   type QueryResult = {
     findPostBySlug: PostProps
   }
@@ -80,9 +76,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
     }
   })
   return {
-    props: {
-      post: data.findPostBySlug
-    }
+    props: data.findPostBySlug
   }
 }
 export default Post
