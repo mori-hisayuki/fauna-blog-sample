@@ -3,20 +3,11 @@ import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import apolloClient from '../../lib/apolloClient'
 import dynamic from 'next/dynamic'
+//TODO: 型定義はあるけどeditorjsが表にでないようにはしたい
+import { OutputData } from '@editorjs/editorjs'
 
-type Block = {
-  id: string
-  //TODO: dataの型はtypeに依存するのでEditorJS用の型定義を作る必用あり
-  data: unknown
-  type: string
-}
-type Content = {
-  time: number
-  blocks: Array<Block>
-  verison: string
-}
 type EditorData = {
-  data: Content
+  data: OutputData
 }
 type PostProps = {
   content: string
@@ -29,7 +20,7 @@ const Output = dynamic<EditorData>(() => import('editorjs-react-renderer'), {
 })
 
 const Post: React.FC<PostProps> = props => {
-  const content = JSON.parse(props.content) as Content
+  const content = JSON.parse(props.content) as OutputData
   return (
     <div className="min-h-full">
       <div className="bg-gray-800 pb-32">
