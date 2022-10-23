@@ -1,0 +1,44 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  # ESLintの推奨設定
+  - eslint:recommended
+  # Next.js 専用の ESLint のルール
+  - next/core-web-vitals
+  - plugin:@typescript-eslint/recommended
+  # prettierの追加
+  - prettier
+plugins:
+  - '@typescript-eslint'
+# ルール追加の手順
+# 1. https://github.com/prettier/eslint-config-prettier/blob/main/index.js でoffになっているものではないこと
+#    off になっているならprettierの設定で同等のことができる可能性が高いので確認する
+# 2. https://eslint.org/docs/latest/rules でルールを確認してeslint:recommendedで有効になっているものか確認する
+#    eslint:recommendedで有効になっているなら追加不要.
+#    また確認した際にDeprecatedになっているルールは追加しない
+rules:
+  # console.logはcommitしない
+  no-console: 'error'
+  # 複数行コメントはjsDoc形式で書く
+  multiline-comment-style: 'warn'
+  # loop内でawaitを使わない
+  no-await-in-loop: 'error'
+  # 重複するimportを禁止する　
+  no-duplicate-imports: 'error'
+  # 両方がまったく同じ変数である場合の比較を許可しない
+  no-self-compare: 'error'
+  # ブロック内で定義されている変数をブロック外で利用しない
+  block-scoped-var: 'error'
+  # クラスメソッド中においてthisが使われていること
+  class-methods-use-this: 'error'
+  # 複雑度を20以下に抑えるように警告（https://eslint.org/docs/latest/rules/complexity）
+  complexity: 'warn'
+  # オブジェクトへのアクセスを括弧ではなくドットにする(https://eslint.org/docs/latest/rules/dot-notation)
+  dot-notation: 'error'
+  # 可能な限り === を仕様する
+  eqeqeq: ["error", "always", {"null": "ignore"}]
+  # elseブロックの中でifブロックのみにしない(else ifを使う)
+  no-lonely-if: 'error'
+  # 再代入されないならconstを使う
+  prefer-const: 'error'
